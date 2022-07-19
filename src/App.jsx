@@ -1,0 +1,13 @@
+import "./App.scss";
+import Home from "./pages/home/home";
+
+function App() {
+  return (
+    <div className="App">
+      Start
+      <Home />
+    </div>
+  );
+}
+
+export default App;
