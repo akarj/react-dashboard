@@ -1,7 +1,6 @@
 import "./Featured.scss";
 import {
   KeyboardArrowDown,
-  KeyboardArrowDownOutlined,
   KeyboardArrowUpOutlined,
   MoreVert,
 } from "@mui/icons-material";
