@@ -1,0 +1,30 @@
+.tableContainer {
+  .cellWrapper {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: calc(var(--space-max) * 2);
+      height: calc(var(--space-max) * 2);
+      border-radius: 50%;
+      margin-right: calc(var(--space-min) * 2.5);
+
+      object-fit: cover;
+    }
+  }
+
+  .status {
+    padding: calc(var(--space-min) * 1.25);
+    border-radius: 5px;
+
+    &.Pending {
+      color: var(--color-pending);
+      background-color: rgba(192, 189, 8, 0.315);
+    }
+
+    &.Approved {
+      color: var(--color-positive);
+      background-color: rgba(8, 192, 23, 0.295);
+    }
+  }
+}
