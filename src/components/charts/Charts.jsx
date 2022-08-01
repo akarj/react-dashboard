@@ -7,20 +7,12 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
-const data = [
-  { month: "Jan", total: 164 },
-  { month: "Feb", total: 65 },
-  { month: "Mar", total: 106 },
-  { month: "Apr", total: 155 },
-  { month: "May", total: 82 },
-  { month: "Jun", total: 188 },
-];
-const Charts = () => {
+import { data } from "./utils";
+const Charts = ({ aspectRatio, title }) => {
   return (
     <div className="chartsWrapper">
-      <div className="title">last 6 months revenue details</div>
-      <ResponsiveContainer width="100%" aspect={2 / 1}>
+      <div className="title">{title}</div>
+      <ResponsiveContainer width="100%" aspect={aspectRatio}>
         <AreaChart
           width={730}
           height={250}
