@@ -2,6 +2,27 @@
   height: calc(var(--space-max) * 37.5);
   padding: calc(var(--space) * 2.5);
 
+  .dataTableTitle {
+    text-transform: capitalize;
+    width: 100%;
+    font-size: calc(var(--space) * 3);
+    color: var(--color-text);
+    margin-bottom: calc(var(--space) * 2.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > .links {
+      color: var(--color-positive);
+      font-size: var(--space-max);
+      font-weight: 400;
+      border: 1px solid var(--color-positive);
+      padding: calc(var(--space-min) * 2.5);
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
   .cellWithImg {
     display: flex;
     align-items: center;

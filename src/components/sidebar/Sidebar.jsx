@@ -12,12 +12,15 @@ import {
   SettingsApplications,
   StoreOutlined,
 } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 import "./Sidebar.scss";
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <span className="logo">Admin</span>
+        <Link to="/" className="links">
+          <span className="logo">Admin</span>
+        </Link>
       </div>
       <hr />
       <div className="center">
@@ -29,14 +32,18 @@ const Sidebar = () => {
           </li>
           <p className="title">LISTS</p>
 
-          <li>
-            <PersonOutlineOutlined className="icon" />
-            <span>Users</span>
-          </li>
-          <li>
-            <StoreOutlined className="icon" />
-            <span>Products</span>
-          </li>
+          <Link to="/users" className="links">
+            <li>
+              <PersonOutlineOutlined className="icon" />
+              <span>Users</span>
+            </li>
+          </Link>
+          <Link to="/products" className="links">
+            <li>
+              <StoreOutlined className="icon" />
+              <span>Products</span>
+            </li>
+          </Link>
           <li>
             <Inventory2Outlined className="icon" />
             <span>Orders</span>

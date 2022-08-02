@@ -44,6 +44,8 @@
 
         span {
           margin-left: var(--space);
+          text-transform: capitalize;
+          color: initial;
         }
 
         .icon {
@@ -51,8 +53,14 @@
         }
 
         &:hover {
+          background-color: rgba(128, 2, 247, 0.25);
+
           color: var(--color-primary);
-          transition: color 200ms ease-in;
+
+          span {
+            color: var(--color-primary);
+            transition: color 200ms ease-in;
+          }
         }
       }
     }
