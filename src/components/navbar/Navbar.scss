@@ -1,7 +1,7 @@
 // @use "/src/index.scss";
 .navbar {
-  height: calc(var(--space-max) * 3);
-  border-bottom: 0.5px solid var(--border-color);
+  height: calc(var(--space-max) * 3.125);
+  border-bottom: 0.25px solid var(--border-color);
   display: flex;
   align-items: center;
   font-size: calc(var(--space) * 2.5);

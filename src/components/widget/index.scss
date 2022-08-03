@@ -22,11 +22,10 @@
   .left {
     font-weight: bold;
     font-size: calc(var(--space) * 1.75);
-    color: var(--color-text);
+    color: gray;
 
     .title {
       text-transform: uppercase;
-      opacity: 0.65;
     }
     .counter {
       font-size: calc(var(--space) * 2.75);
@@ -35,7 +34,7 @@
     .link {
       font-size: calc(var(--space) * 1.5);
       border-bottom: 1px solid var(--border-color);
-      opacity: 0.75;
+      // opacity: 0.75;
       width: max-content;
 
       &:hover {

@@ -19,10 +19,11 @@
       box-shadow: var(--box-shadow-one);
       padding: calc(var(--space) * 2.5);
       margin: calc(var(--space) * 2.5);
+      color: var(--color-text-dark);
       .listTitle {
         font-weight: 500;
         color: var(--color-text);
-        opacity: 0.95;
+        // opacity: 0.95;
         margin-bottom: calc(var(--space-min) * 2.5);
       }
     }
