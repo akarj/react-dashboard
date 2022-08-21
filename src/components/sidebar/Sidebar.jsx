@@ -14,7 +14,7 @@ import {
 } from "@mui/icons-material";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { DarkModeContext } from "../../context/darkModeContext";
+import { DarkModeContext } from "../../context/darkModeContext/darkModeContext";
 import "./Sidebar.scss";
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);

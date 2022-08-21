@@ -3,9 +3,36 @@ import { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./new.scss";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+
+import { database, auth } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
+  const [data, setData] = useState({});
+
+  const changeHandler = e => {
+    const id = e.target.id;
+    const value = e.target.value;
+
+    setData({ ...data, [id]: value });
+  };
+
+  const submitHandler = async e => {
+    e.preventDefault();
+    try {
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      await setDoc(doc(database, "users", res.user.uid), {
+        ...data,
+        timestamp: serverTimestamp(),
+      });
+    } catch (e) {}
+  };
 
   return (
     <div className="new">
@@ -27,7 +54,7 @@ const New = ({ inputs, title }) => {
             />
           </div>
           <div className="right">
-            <form>
+            <form onSubmit={submitHandler}>
               <div className="formInput">
                 <label htmlFor="profileImage">
                   Image
@@ -49,6 +76,7 @@ const New = ({ inputs, title }) => {
                       type={input.type}
                       placeholder={input.placeholder}
                       id={input.id}
+                      onChange={changeHandler}
                     />
                   </div>
                 );

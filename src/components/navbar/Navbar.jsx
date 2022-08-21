@@ -8,7 +8,7 @@ import {
   SearchOutlined,
 } from "@mui/icons-material";
 import { useContext } from "react";
-import { DarkModeContext } from "../../context/darkModeContext";
+import { DarkModeContext } from "../../context/darkModeContext/darkModeContext";
 import "./Navbar.scss";
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
