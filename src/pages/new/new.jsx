@@ -1,16 +1,63 @@
 import { DriveFolderUploadOutlined } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./new.scss";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
-
-import { database, auth } from "../../firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { database, auth, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
+  const [per, setPer] = useState(null);
+
+  console.log(data);
+  console.log("file", file);
+
+  console.log("per", per !== null && per < 100, per);
+
+  useEffect(() => {
+    const uploadFile = () => {
+      const newName = new Date().getTime() + file.name;
+      const storageRef = ref(storage, newName);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        snapshot => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+          setPer(progress);
+          console.log("Upload is paused", progress);
+
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+            default:
+              break;
+          }
+        },
+        error => {
+          // console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+            setData(prev => ({ ...prev, img: downloadURL }));
+          });
+        }
+      );
+    };
+
+    file && uploadFile();
+  }, [file]);
 
   const changeHandler = e => {
     const id = e.target.id;
@@ -31,7 +78,9 @@ const New = ({ inputs, title }) => {
         ...data,
         timestamp: serverTimestamp(),
       });
-    } catch (e) {}
+    } catch (ev) {
+      window.alert(ev.message);
+    }
   };
 
   return (
@@ -82,7 +131,7 @@ const New = ({ inputs, title }) => {
                 );
               })}
 
-              <button>Send</button>
+              <button disabled={per !== null && per < 100}>Send</button>
             </form>
           </div>
         </div>

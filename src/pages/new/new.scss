@@ -57,7 +57,14 @@
               width: 100%;
               padding: calc(var(--space-min) * 1.25);
               border: none;
+              outline: none;
+
               border-bottom: 1px solid var(--color-text);
+
+              &:focus {
+                outline: none;
+                border-bottom-color: teal;
+              }
             }
           }
 
@@ -71,6 +78,21 @@
             cursor: pointer;
             margin-bottom: calc(var(--space-min) * 5);
             margin-top: calc(var(--space-min) * 2.5);
+
+            &:disabled {
+              background-color: rgba(3, 92, 92, 0.322);
+              cursor: not-allowed;
+            }
+
+            &:active {
+              outline: 1px solid var(--color-button, rgb(15, 202, 140));
+              box-shadow: var(--box-shadow-one);
+            }
+
+            &:focus {
+              outline: 1px solid var(--color-button, rgb(29, 202, 38));
+              box-shadow: var(--box-shadow-one);
+            }
           }
         }
       }
